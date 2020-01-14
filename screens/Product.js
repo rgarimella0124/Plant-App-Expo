@@ -26,7 +26,7 @@ const { width, height } = Dimensions.get("window");
 class Product extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
-      headerRight: (
+      headerRight: () => (
         <Button onPress={() => {}}>
           <Entypo name="dots-three-horizontal" color={theme.colors.gray} />
         </Button>

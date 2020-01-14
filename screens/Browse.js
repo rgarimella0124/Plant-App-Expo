@@ -7,7 +7,6 @@ import {
   TouchableOpacity
 } from "react-native";
 
-// import { Card, Badge, Button, Block, Text } from "../components";
 import Block from "../components/Block";
 import Badge from "../components/Badge";
 import Button from "../components/Button";
@@ -21,7 +20,10 @@ import { theme, mocks } from "../constants";
 
 const { width } = Dimensions.get("window");
 
-class Browse extends Component {
+export default class Browse extends Component {
+  static navigationOptions = {
+    headerShown: false
+  };
   state = {
     active: "Products",
     categories: []
@@ -115,8 +117,6 @@ Browse.defaultProps = {
   profile: mocks.profile,
   categories: mocks.categories
 };
-
-export default Browse;
 
 const styles = StyleSheet.create({
   header: {

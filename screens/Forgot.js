@@ -22,6 +22,9 @@ import { theme } from "../constants";
 const VALID_EMAIL = "contact@react-ui-kit.com";
 
 export default class Forgot extends Component {
+  static navigationOptions = {
+    headerShown: false
+  };
   state = {
     email: VALID_EMAIL,
     errors: [],
@@ -116,7 +119,8 @@ export default class Forgot extends Component {
 const styles = StyleSheet.create({
   forgot: {
     flex: 1,
-    justifyContent: "center"
+    justifyContent: "center",
+    marginTop: 100
   },
   input: {
     borderRadius: 0,

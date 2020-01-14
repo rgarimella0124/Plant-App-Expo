@@ -25,7 +25,10 @@ import { theme, mocks } from "../constants";
 
 const { width, height } = Dimensions.get("window");
 
-class Explore extends Component {
+export default class Explore extends Component {
+  static navigationOptions = {
+    headerShown: false
+  };
   state = {
     searchFocus: new Animated.Value(0.6),
     searchString: null
@@ -148,8 +151,6 @@ Explore.defaultProps = {
   images: mocks.explore
 };
 
-export default Explore;
-
 const styles = StyleSheet.create({
   header: {
     paddingHorizontal: theme.sizes.base * 2,
@@ -157,7 +158,8 @@ const styles = StyleSheet.create({
   },
   search: {
     height: theme.sizes.base * 2,
-    width: width - theme.sizes.base * 2
+    width: width - theme.sizes.base * 2,
+    marginTop:100
   },
   searchInput: {
     fontSize: theme.sizes.caption,

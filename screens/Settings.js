@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import { Image, StyleSheet, ScrollView, TextInput } from 'react-native'
-import Slider from 'react-native-slider';
+import React, { Component } from "react";
+import { Image, StyleSheet, ScrollView, TextInput } from "react-native";
+import Slider from "react-native-slider";
 
 // import { Divider, Button, Block, Text, Switch } from '../components';
 import Block from "../components/Block";
@@ -12,17 +12,20 @@ import Text from "../components/Text";
 import Progress from "../components/Progress";
 import Divider from "../components/Divider";
 import Switch from "../components/Switch";
-import { theme, mocks } from '../constants';
+import { theme, mocks } from "../constants";
 
 class Settings extends Component {
+  static navigationOptions = {
+    headerShown: false
+  };
   state = {
     budget: 850,
     monthly: 1700,
     notifications: true,
     newsletter: false,
     editing: null,
-    profile: {},
-  }
+    profile: {}
+  };
 
   componentDidMount() {
     this.setState({ profile: this.props.profile });
@@ -49,10 +52,10 @@ class Settings extends Component {
           defaultValue={profile[name]}
           onChangeText={text => this.handleEdit([name], text)}
         />
-      )
+      );
     }
 
-    return <Text bold>{profile[name]}</Text>
+    return <Text bold>{profile[name]}</Text>;
   }
 
   render() {
@@ -61,12 +64,11 @@ class Settings extends Component {
     return (
       <Block>
         <Block flex={false} row center space="between" style={styles.header}>
-          <Text h1 bold>Settings</Text>
+          <Text h1 bold>
+            Settings
+          </Text>
           <Button>
-            <Image
-              source={profile.avatar}
-              style={styles.avatar}
-            />
+            <Image source={profile.avatar} style={styles.avatar} />
           </Button>
         </Block>
 
@@ -74,25 +76,39 @@ class Settings extends Component {
           <Block style={styles.inputs}>
             <Block row space="between" margin={[10, 0]} style={styles.inputRow}>
               <Block>
-                <Text gray2 style={{ marginBottom: 10 }}>Username</Text>
-                {this.renderEdit('username')}
+                <Text gray2 style={{ marginBottom: 10 }}>
+                  Username
+                </Text>
+                {this.renderEdit("username")}
               </Block>
-              <Text medium secondary onPress={() => this.toggleEdit('username')}>
-                {editing === 'username' ? 'Save' : 'Edit'}
+              <Text
+                medium
+                secondary
+                onPress={() => this.toggleEdit("username")}
+              >
+                {editing === "username" ? "Save" : "Edit"}
               </Text>
             </Block>
             <Block row space="between" margin={[10, 0]} style={styles.inputRow}>
               <Block>
-                <Text gray2 style={{ marginBottom: 10 }}>Location</Text>
-                {this.renderEdit('location')}
+                <Text gray2 style={{ marginBottom: 10 }}>
+                  Location
+                </Text>
+                {this.renderEdit("location")}
               </Block>
-              <Text medium secondary onPress={() => this.toggleEdit('location')}>
-                {editing === 'location' ? 'Save' : 'Edit'}
+              <Text
+                medium
+                secondary
+                onPress={() => this.toggleEdit("location")}
+              >
+                {editing === "location" ? "Save" : "Edit"}
               </Text>
             </Block>
             <Block row space="between" margin={[10, 0]} style={styles.inputRow}>
               <Block>
-                <Text gray2 style={{ marginBottom: 10 }}>E-mail</Text>
+                <Text gray2 style={{ marginBottom: 10 }}>
+                  E-mail
+                </Text>
                 <Text bold>{profile.email}</Text>
               </Block>
             </Block>
@@ -102,7 +118,9 @@ class Settings extends Component {
 
           <Block style={styles.sliders}>
             <Block margin={[10, 0]}>
-              <Text gray2 style={{ marginBottom: 10 }}>Budget</Text>
+              <Text gray2 style={{ marginBottom: 10 }}>
+                Budget
+              </Text>
               <Slider
                 minimumValue={0}
                 maximumValue={1000}
@@ -114,10 +132,14 @@ class Settings extends Component {
                 value={this.state.budget}
                 onValueChange={value => this.setState({ budget: value })}
               />
-              <Text caption gray right>$1,000</Text>
+              <Text caption gray right>
+                $1,000
+              </Text>
             </Block>
             <Block margin={[10, 0]}>
-              <Text gray2 style={{ marginBottom: 10 }}>Monthly Cap</Text>
+              <Text gray2 style={{ marginBottom: 10 }}>
+                Monthly Cap
+              </Text>
               <Slider
                 minimumValue={0}
                 maximumValue={5000}
@@ -129,22 +151,34 @@ class Settings extends Component {
                 value={this.state.monthly}
                 onValueChange={value => this.setState({ monthly: value })}
               />
-              <Text caption gray right>$5,000</Text>
+              <Text caption gray right>
+                $5,000
+              </Text>
             </Block>
           </Block>
 
           <Divider />
 
           <Block style={styles.toggles}>
-            <Block row center space="between" style={{ marginBottom: theme.sizes.base * 2 }}>
+            <Block
+              row
+              center
+              space="between"
+              style={{ marginBottom: theme.sizes.base * 2 }}
+            >
               <Text gray2>Notifications</Text>
               <Switch
                 value={this.state.notifications}
                 onValueChange={value => this.setState({ notifications: value })}
               />
             </Block>
-            
-            <Block row center space="between" style={{ marginBottom: theme.sizes.base * 2 }}>
+
+            <Block
+              row
+              center
+              space="between"
+              style={{ marginBottom: theme.sizes.base * 2 }}
+            >
               <Text gray2>Newsletter</Text>
               <Switch
                 value={this.state.newsletter}
@@ -152,47 +186,46 @@ class Settings extends Component {
               />
             </Block>
           </Block>
-
         </ScrollView>
       </Block>
-    )
+    );
   }
 }
 
 Settings.defaultProps = {
-  profile: mocks.profile,
-}
+  profile: mocks.profile
+};
 
 export default Settings;
 
 const styles = StyleSheet.create({
   header: {
-    paddingHorizontal: theme.sizes.base * 2,
+    paddingHorizontal: theme.sizes.base * 2
   },
   avatar: {
     height: theme.sizes.base * 2.2,
-    width: theme.sizes.base * 2.2,
+    width: theme.sizes.base * 2.2
   },
   inputs: {
     marginTop: theme.sizes.base * 0.7,
-    paddingHorizontal: theme.sizes.base * 2,
+    paddingHorizontal: theme.sizes.base * 2
   },
   inputRow: {
-    alignItems: 'flex-end'
+    alignItems: "flex-end"
   },
   sliders: {
     marginTop: theme.sizes.base * 0.7,
-    paddingHorizontal: theme.sizes.base * 2,
+    paddingHorizontal: theme.sizes.base * 2
   },
   thumb: {
     width: theme.sizes.base,
     height: theme.sizes.base,
     borderRadius: theme.sizes.base,
-    borderColor: 'white',
+    borderColor: "white",
     borderWidth: 3,
-    backgroundColor: theme.colors.secondary,
+    backgroundColor: theme.colors.secondary
   },
   toggles: {
-    paddingHorizontal: theme.sizes.base * 2,
+    paddingHorizontal: theme.sizes.base * 2
   }
-})
+});

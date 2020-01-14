@@ -22,6 +22,9 @@ const VALID_EMAIL = "contact@react-ui-kit.com";
 const VALID_PASSWORD = "subscribe";
 
 export default class Login extends Component {
+  static navigationOptions = {
+    headerShown: false
+  };
   state = {
     email: VALID_EMAIL,
     password: VALID_PASSWORD,
@@ -109,6 +112,7 @@ export default class Login extends Component {
 const styles = StyleSheet.create({
   login: {
     flex: 1,
+    marginTop: 100,
     justifyContent: "center"
   },
   input: {
